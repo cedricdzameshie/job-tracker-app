@@ -1,9 +1,7 @@
+import Dashboard from './pages/Dashboard';
+
 function App() {
-  return (
-    <div>
-      Job Tracker App
-    </div>
-  );
+  return <Dashboard />;
 }
 
 export default App;
