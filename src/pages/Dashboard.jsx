@@ -12,18 +12,16 @@ const jobs = [
   },
 ];
 
-// 3️⃣ Component function
 function Dashboard() {
   return (
     <div>
       <Header />
       <main>
         <JobForm />
-        <JobList />
+        <JobList jobs={jobs} />
       </main>
 
-      {/* Temporary debug output */}
-      <pre>{JSON.stringify(jobs, null, 2)}</pre>
+      
     </div>
   );
 }
