@@ -1,0 +1,17 @@
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+main {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  main {
+    grid-template-columns: 320px 1fr;
+    align-items: start;
+  }
+}
