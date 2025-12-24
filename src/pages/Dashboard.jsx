@@ -28,6 +28,22 @@ function Dashboard() {
     setJobs((prevJobs) => [newJob, ...prevJobs]);
   }
 
+   // ✅ DELETE ONE JOB
+  function handleDeleteJob(jobId) {
+    setJobs((prevJobs) =>
+      prevJobs.filter((job) => job.id !== jobId)
+    );
+  }
+
+  // ✅ UPDATE STATUS
+  function handleUpdateStatus(jobId, newStatus) {
+    setJobs((prevJobs) =>
+      prevJobs.map((job) =>
+        job.id === jobId ? { ...job, status: newStatus } : job
+      )
+    );
+  }
+
   function handleClearJobs() {
     setJobs([]);
   }
@@ -47,7 +63,9 @@ function Dashboard() {
 
       <main>
         <JobForm onAddJob={handleAddJob} />
-        <JobList jobs={jobs} />
+        <JobList jobs={jobs}
+        onDeleteJob={handleDeleteJob} 
+        onUpdateStatus={handleUpdateStatus}/>
       </main>
     </div>
   );
