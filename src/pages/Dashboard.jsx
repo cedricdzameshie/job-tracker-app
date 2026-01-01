@@ -134,6 +134,8 @@ function Dashboard() {
           jobs={filteredJobs}
           onDeleteJob={handleDeleteJob}
           onUpdateStatus={handleUpdateStatus}
+          query={query}
+          statusFilter={statusFilter}
         />
       </main>
     </div>
