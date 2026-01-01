@@ -1,14 +1,20 @@
 import JobCard from "./JobCard";
 
-function JobList({ jobs, onDeleteJob, onUpdateStatus, query, statusFilter }) {
+function JobList({
+  jobs,
+  onDeleteJob,
+  onUpdateStatus,
+  onEditJob,
+  query,
+  statusFilter,
+}) {
   if (!jobs || jobs.length === 0) {
-    const hasFilters = (query && query.trim() !== "") || (statusFilter && statusFilter !== "All");
+    const hasFilters =
+      (query && query.trim() !== "") ||
+      (statusFilter && statusFilter !== "All");
+
     return (
-      <p>
-        {hasFilters
-          ? "No jobs match your search/filters."
-          : "No applications yet."}
-      </p>
+      <p>{hasFilters ? "No jobs match your search/filters." : "No applications yet."}</p>
     );
   }
 
@@ -22,6 +28,7 @@ function JobList({ jobs, onDeleteJob, onUpdateStatus, query, statusFilter }) {
             job={job}
             onDeleteJob={onDeleteJob}
             onUpdateStatus={onUpdateStatus}
+            onEditJob={onEditJob}
           />
         ))}
       </div>

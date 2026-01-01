@@ -1,0 +1,41 @@
+.filters {
+  margin: 12px 0;
+  display: grid;
+  gap: 12px;
+}
+
+.filters__controls {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 900px) {
+  .filters__controls {
+    grid-template-columns: 1fr 180px 200px;
+    align-items: end;
+  }
+}
+
+.filters__field {
+  display: grid;
+  gap: 6px;
+}
+
+.filters__label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.filters__input,
+.filters__select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.filters__stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}

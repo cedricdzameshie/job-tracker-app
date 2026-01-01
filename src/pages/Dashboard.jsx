@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import JobForm from "../components/JobForm";
 import JobList from "../components/JobList";
+import FiltersBar from "../components/FiltersBar";
 import "../styles/layout.css";
 
 function Dashboard() {
@@ -25,10 +26,13 @@ function Dashboard() {
 
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
+  const [sortBy, setSortBy] = useState("dateDesc");
 
   /* =====================
      DERIVED DATA
   ====================== */
+
+  // Filtered Jobs
   const filteredJobs = jobs.filter((job) => {
     const matchesQuery =
       job.company.toLowerCase().includes(query.toLowerCase()) ||
@@ -40,6 +44,28 @@ function Dashboard() {
     return matchesQuery && matchesStatus;
   });
 
+  // Sorted Jobs
+  const sortedJobs = [...filteredJobs].sort((a, b) => {
+    const aDate = new Date(a.dateApplied).getTime();
+    const bDate = new Date(b.dateApplied).getTime();
+
+    switch (sortBy) {
+      case "dateDesc":
+        return bDate - aDate;
+      case "dateAsc":
+        return aDate - bDate;
+      case "companyAsc":
+        return a.company.localeCompare(b.company);
+      case "roleAsc":
+        return a.role.localeCompare(b.role);
+      case "statusAsc":
+        return a.status.localeCompare(b.status);
+      default:
+        return 0;
+    }
+  });
+
+  // Stats
   const stats = jobs.reduce(
     (acc, job) => {
       acc.total += 1;
@@ -61,6 +87,14 @@ function Dashboard() {
   ====================== */
   function handleAddJob(newJob) {
     setJobs((prevJobs) => [newJob, ...prevJobs]);
+  }
+
+  function handleEditJob(jobId, updates) {
+    setJobs((prevJobs) =>
+      prevJobs.map((job) =>
+        job.id === jobId ? { ...job, ...updates } : job
+      )
+    );
   }
 
   function handleDeleteJob(jobId) {
@@ -86,37 +120,16 @@ function Dashboard() {
     <div className="page-container">
       <Header />
 
-      {/* 🔍 Search, Filter, Stats */}
-      <section style={{ margin: "12px 0", display: "grid", gap: 12 }}>
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search company or role..."
-            style={{ padding: 8, minWidth: 240 }}
-          />
-
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            style={{ padding: 8 }}
-          >
-            <option value="All">All statuses</option>
-            <option value="Applied">Applied</option>
-            <option value="Interviewing">Interviewing</option>
-            <option value="Offer">Offer</option>
-            <option value="Rejected">Rejected</option>
-          </select>
-        </div>
-
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <strong>Total:</strong> {stats.total}
-          <span>Applied: {stats.Applied || 0}</span>
-          <span>Interviewing: {stats.Interviewing || 0}</span>
-          <span>Offer: {stats.Offer || 0}</span>
-          <span>Rejected: {stats.Rejected || 0}</span>
-        </div>
-      </section>
+      {/* 🔍 Filters Bar */}
+      <FiltersBar
+  query={query}
+  setQuery={setQuery}
+  statusFilter={statusFilter}
+  setStatusFilter={setStatusFilter}
+  sortBy={sortBy}
+  setSortBy={setSortBy}
+  stats={stats}
+/>
 
       {/* 🧹 Clear Button */}
       {jobs.length > 0 && (
@@ -131,9 +144,10 @@ function Dashboard() {
       <main>
         <JobForm onAddJob={handleAddJob} />
         <JobList
-          jobs={filteredJobs}
+          jobs={sortedJobs}
           onDeleteJob={handleDeleteJob}
           onUpdateStatus={handleUpdateStatus}
+          onEditJob={handleEditJob}
           query={query}
           statusFilter={statusFilter}
         />
