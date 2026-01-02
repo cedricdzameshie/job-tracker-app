@@ -3,6 +3,7 @@ import "../styles/JobCard.css";
 
 function JobCard({ job, onDeleteJob, onUpdateStatus, onEditJob }) {
   const [isEditing, setIsEditing] = useState(false);
+  
   const [company, setCompany] = useState(job.company);
   const [role, setRole] = useState(job.role);
   const [dateApplied, setDateApplied] = useState(job.dateApplied);

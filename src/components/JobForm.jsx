@@ -1,8 +1,10 @@
 import { useState } from "react";
+import "../styles/JobForm.css";
 
 function JobForm({ onAddJob }) {
   const [company, setCompany] = useState("");
   const [role, setRole] = useState("");
+  const [error, setError] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -10,7 +12,10 @@ function JobForm({ onAddJob }) {
     const cleanCompany = company.trim();
     const cleanRole = role.trim();
 
-    if (!cleanCompany || !cleanRole) return;
+    if (!cleanCompany || !cleanRole) {
+      setError("Company and role are required.");
+      return;
+    }
 
     const newJob = {
       id: Date.now(),
@@ -24,37 +29,46 @@ function JobForm({ onAddJob }) {
 
     setCompany("");
     setRole("");
+    setError("");
   }
 
   return (
-    <section>
-      <h2>Add Application</h2>
+  <section className="job-form">
+    <h2 className="job-form__title">Add Application</h2>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="company">Company</label>
-          <input
-            id="company"
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}
-            placeholder="e.g., Verizon"
-          />
-        </div>
+    <form className="job-form__form" onSubmit={handleSubmit}>
+      <div className="job-form__field">
+        <label className="job-form__label" htmlFor="company">
+          Company
+        </label>
+        <input
+          className="job-form__input"
+          id="company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          placeholder="e.g., Verizon"
+        />
+      </div>
 
-        <div>
-          <label htmlFor="role">Role</label>
-          <input
-            id="role"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            placeholder="e.g., Frontend Developer"
-          />
-        </div>
-
-        <button type="submit">Add</button>
-      </form>
-    </section>
-  );
+      <div className="job-form__field">
+        <label className="job-form__label" htmlFor="role">
+          Role
+        </label>
+        <input
+          className="job-form__input"
+          id="role"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          placeholder="e.g., Frontend Developer"
+        />
+      </div>
+{ error && <p className="job-form__error">{error}</p> }
+      <button className="job-form__submit" type="submit">
+        Add
+      </button>
+    </form>
+  </section>
+);
 }
 
 export default JobForm;

@@ -1,0 +1,28 @@
+.filters-bar {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filters-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filters-bar input,
+.filters-bar select {
+  padding: 8px;
+  min-width: 220px;
+}
+
+.filters-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+.filters-bar__label {
+  font-size: 13px;
+  font-weight: 600;
+}

@@ -98,6 +98,8 @@ function Dashboard() {
   }
 
   function handleDeleteJob(jobId) {
+    const confirmed = window.confirm("Delete this application?");
+    if (!confirmed) return;
     setJobs((prevJobs) => prevJobs.filter((job) => job.id !== jobId));
   }
 

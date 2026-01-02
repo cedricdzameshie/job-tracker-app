@@ -1,5 +1,5 @@
 import JobCard from "./JobCard";
-
+import "../styles/JobList.css";
 function JobList({
   jobs,
   onDeleteJob,
@@ -20,7 +20,7 @@ function JobList({
 
   return (
     <section>
-      <h2>Applications</h2>
+      <h2 className="job-list__title">Applications</h2>
       <div>
         {jobs.map((job) => (
           <JobCard

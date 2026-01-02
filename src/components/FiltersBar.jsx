@@ -1,4 +1,5 @@
 import "../styles/filters.css";
+import "../styles/FiltersBar.css";
 
 function FiltersBar({
   query,

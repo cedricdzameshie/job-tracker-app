@@ -1,17 +1,19 @@
 .page-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 16px;
 }
 
 main {
   display: grid;
-  gap: 16px;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: start;
 }
 
-@media (min-width: 900px) {
+/* Stack on smaller screens */
+@media (max-width: 768px) {
   main {
-    grid-template-columns: 320px 1fr;
-    align-items: start;
+    grid-template-columns: 1fr;
   }
 }

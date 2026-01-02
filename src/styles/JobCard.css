@@ -4,6 +4,12 @@
   padding: 12px 16px;
   margin-bottom: 12px;
   background: #fff;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.job-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .job-card__title {
