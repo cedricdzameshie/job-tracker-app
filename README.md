@@ -1,16 +1,159 @@
-# React + Vite
+Job Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based job application tracker that helps users organize, manage, and track job applications in one place.
 
-Currently, two official plugins are available:
+This project focuses on clean component architecture, real-world UI behavior, and incremental feature development, and is actively being improved.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✨ Features (v1)
 
-## React Compiler
+Application Management
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    -Add new job applications
 
-## Expanding the ESLint configuration
+    -Edit existing applications inline
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    -Update application status (Applied, Interviewing, Offer, Rejected)
+
+    -Delete individual applications (with confirmation)
+
+    -Clear all applications
+
+Organization & Productivity
+
+    -Search applications by company or role
+
+    -Filter by application status
+
+    -Sort applications by:
+
+    -Date applied (newest / oldest)
+
+    -Company name
+
+    -Role
+
+    -Status
+
+    -Live statistics summary (total applications + per status)
+
+User Experience
+
+    -Form validation with user feedback
+
+    -Confirmation before destructive actions
+
+    -Clean, responsive layout
+
+    -Component-scoped styling
+
+Persistence
+
+    -Applications are saved to localStorage
+
+    -Data persists across page refreshes
+
+---
+
+🧠 Technical Highlights
+
+This project demonstrates:
+
+    -React functional components
+
+    -useState and useEffect
+
+    -Controlled form inputs
+
+    -Derived state (filtering, sorting, statistics)
+
+    -Immutable state updates
+
+    -Component composition and prop-driven architecture
+
+    -Local persistence using browser APIs
+
+    -Incremental refactoring and UX polish
+
+---
+
+🛠 Tech Stack
+
+-React
+
+-JavaScript (ES6+)
+
+-CSS (component-scoped styles)
+
+-Vite
+
+-Git & GitHub
+
+---
+
+📁 Project Structure
+
+src/
+├─ components/
+│ ├─ FiltersBar.jsx
+│ ├─ Header.jsx
+│ ├─ JobCard.jsx
+│ ├─ JobForm.jsx
+│ └─ JobList.jsx
+├─ pages/
+│ └─ Dashboard.jsx
+├─ styles/
+│ ├─ filters.css
+│ ├─ FiltersBar.css
+│ ├─ global.css
+│ ├─ JobCard.css
+│ ├─ JobForm.css
+│ ├─ JobList.css
+│ └─ layout.css
+├─ App.jsx
+└─ main.jsx
+
+---
+
+🚧 Planned Improvements (v2)
+
+    -Improved accessibility (ARIA, keyboard navigation)
+
+    -Empty-state messaging
+
+    -Confirmation dialogs for bulk actions
+
+    -Backend persistence (API + database)
+
+    -Authentication and user accounts
+
+    -Export applications (CSV / PDF)
+
+    -Automated testing
+
+---
+
+📌 Status
+
+Version: v1.0
+Status: Actively developed and iterating
+
+---
+
+🚀 Getting Started
+
+    npm install
+    npm run dev
+
+    ---
+
+🧩 Why this project exists
+
+    -This project was built to:
+
+    -Practice real-world React patterns
+
+    -Reinforce state management fundamentals
+
+    -Simulate a practical productivity tool
+
+    -Serve as an evolving portfolio project
